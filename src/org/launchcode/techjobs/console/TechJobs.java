@@ -61,9 +61,36 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
-                } else {
-                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
+
+                    ArrayList<HashMap<String, String>> searchjob = JobData.findByValue(searchTerm);
+
+                    if(searchjob.isEmpty() != true) {
+                        for (HashMap<String, String> job : searchjob) {
+                            System.out.println("*****");
+                            for (String key : job.keySet()) {
+                                System.out.println(key + ": " + job.get(key));
+                            }
+                            System.out.println("*****");
+                            System.out.println("");
+                        }
+                    }
+                    else {
+                        System.out.println("I have no data for you");
+                    }
+
+
+
+
+
+                } else{
+                    ArrayList<HashMap<String, String>> searchlist = JobData.findByColumnAndValue(searchField, searchTerm);
+                    if(searchlist.isEmpty() != true){
+                        printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
+                    }
+                    else {
+                        System.out.println("I have no data for you");
+                    }
+
                 }
             }
         }
@@ -110,7 +137,20 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        if(someJobs != null) {
+            for (HashMap<String, String> job : someJobs) {
+                System.out.println("*****");
+                for (String key : job.keySet()) {
+                    System.out.println(key + ": " + job.get(key));
+                }
+                System.out.println("*****");
+                System.out.println("");
+            }
+        }
+        else {
+                System.out.println("I have no data for you");
+            }
 
-        System.out.println("printJobs is not implemented yet");
+
     }
 }
