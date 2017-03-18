@@ -65,14 +65,8 @@ public class TechJobs {
                     ArrayList<HashMap<String, String>> searchjob = JobData.findByValue(searchTerm);
 
                     if(searchjob.isEmpty() != true) {
-                        for (HashMap<String, String> job : searchjob) {
-                            System.out.println("*****");
-                            for (String key : job.keySet()) {
-                                System.out.println(key + ": " + job.get(key));
-                            }
-                            System.out.println("*****");
-                            System.out.println("");
-                        }
+                        printJobs(searchjob);
+
                     }
                     else {
                         System.out.println("I have no data for you");

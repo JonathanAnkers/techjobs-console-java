@@ -94,22 +94,19 @@ public class JobData {
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for(HashMap<String, String> thejob : allJobs) {
-
-
-            for(String key : thejob.keySet()){
-                if(thejob.get(key).contains(searchkey)){
-                    jobs.add(thejob);
+                for(String key : thejob.keySet()){
+                    if (thejob.get(key).contains(searchkey)) {
+                        jobs.add(thejob);
+                        break;
+                    }
+                    else if (thejob.get(key).toLowerCase().contains(searchkey.toLowerCase())) {
+                        jobs.add(thejob);
+                        break;
+                    }
                 }
-                else if(thejob.get(key).toLowerCase().contains(searchkey.toLowerCase())){
-                    jobs.add(thejob);
-                }
+
 
             }
-
-        }
-
-
-
         return jobs;
 
     }
